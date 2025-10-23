@@ -1,0 +1,11 @@
+Package: com.yourname.wangzhehelper
+Name: 王者荣耀快速充值助手
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: 快速充值王者荣耀点券，跳过广告弹窗。在游戏中点击悬浮按钮即可快速充值。
+Maintainer: Your Name <your.email@example.com>
+Author: Your Name <your.email@example.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 11.0), preferenceloader
+Icon: file:///Library/PreferenceBundles/WZHelperPrefs.bundle/icon.png
+

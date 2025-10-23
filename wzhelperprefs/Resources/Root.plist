@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>功能设置</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.yourname.wangzhehelper</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>启用插件</string>
+			<key>PostNotification</key>
+			<string>com.yourname.wangzhehelper/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.yourname.wangzhehelper</string>
+			<key>key</key>
+			<string>showFloatingButton</string>
+			<key>label</key>
+			<string>显示悬浮按钮</string>
+			<key>PostNotification</key>
+			<string>com.yourname.wangzhehelper/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.yourname.wangzhehelper</string>
+			<key>key</key>
+			<string>autoCloseAds</string>
+			<key>label</key>
+			<string>自动关闭广告弹窗</string>
+			<key>PostNotification</key>
+			<string>com.yourname.wangzhehelper/ReloadPrefs</string>
+		</dict>
+		
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>悬浮按钮设置</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.9</real>
+			<key>defaults</key>
+			<string>com.yourname.wangzhehelper</string>
+			<key>key</key>
+			<string>buttonOpacity</string>
+			<key>label</key>
+			<string>按钮透明度</string>
+			<key>min</key>
+			<real>0.3</real>
+			<key>max</key>
+			<real>1.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.yourname.wangzhehelper/ReloadPrefs</string>
+		</dict>
+		
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>关于</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>关于此插件</string>
+			<key>action</key>
+			<string>showAbout</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>访问 GitHub</string>
+			<key>action</key>
+			<string>openGitHub</string>
+		</dict>
+		
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>王者荣耀快速充值助手 v1.0.0
+跳过广告，一键充值
+
+重新启动游戏以应用更改</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>王者助手</string>
+</dict>
+</plist>
+

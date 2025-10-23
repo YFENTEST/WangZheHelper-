@@ -1,0 +1,180 @@
+========================================================
+  GitHub 自动编译 - 详细图文步骤
+========================================================
+
+✅ 第 1 步：准备文件
+----------------------------------------
+
+在你的电脑上，确认这些文件都在：
+D:\project\1023001\
+
+必须上传的文件：
+  ✓ .github/workflows/build.yml  （最重要！）
+  ✓ Tweak.x
+  ✓ Makefile
+  ✓ control
+  ✓ WangZheHelper.plist
+  ✓ wzhelperprefs/ （整个文件夹）
+  ✓ .gitignore
+
+可选文件：
+  - README.md
+  - LICENSE
+  - 使用说明.md
+  - 等等
+
+
+✅ 第 2 步：上传到 GitHub
+----------------------------------------
+
+【方法 A：网页上传（最简单）】
+
+1. 打开你的 GitHub 仓库页面
+   例如：https://github.com/你的用户名/你的仓库名
+
+2. 点击绿色的 "Add file" 按钮
+   → 选择 "Upload files"
+
+3. 把 D:\project\1023001\ 里的所有文件拖到网页里
+   （可以全选后拖拽）
+
+4. 等待上传完成（看到文件列表）
+
+5. 滚动到底部，在 "Commit changes" 下面：
+   - 标题自动填写（不用改）
+   - 点击绿色的 "Commit changes" 按钮
+
+6. 上传完成！
+
+
+【方法 B：使用 Git 命令（如果你会 Git）】
+
+在 PowerShell 中（在项目目录）：
+
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/你的用户名/你的仓库名.git
+git push -u origin main
+
+
+✅ 第 3 步：查看自动编译
+----------------------------------------
+
+1. 上传完成后，在仓库页面点击 "Actions" 标签
+   （在 Code、Issues、Pull requests 那一排）
+
+2. 你会看到：
+   - 左侧：Build iOS Tweak（工作流名称）
+   - 中间：一个任务正在运行
+   - 状态：🟡 黄色转圈（进行中）
+
+3. 点击那个任务，可以看到详细进度：
+   - Install dependencies
+   - Install Theos
+   - Install iOS SDK
+   - Build tweak
+   - Upload deb package
+
+4. 等待 5-10 分钟（第一次可能慢一点）
+
+5. 完成后变成：✅ 绿色勾（成功）
+   如果是 ❌ 红色叉（失败），点进去看错误信息
+
+
+✅ 第 4 步：下载编译好的 deb
+----------------------------------------
+
+1. 在成功的任务页面（✅ 绿色勾）
+
+2. 滚动到页面最底部
+
+3. 找到 "Artifacts" 区域
+
+4. 看到 "WangZheHelper-deb" 
+   （后面有文件大小，例如 85.2 KB）
+
+5. 点击 "WangZheHelper-deb" 下载
+
+6. 下载的是一个 .zip 文件
+
+7. 解压 zip 文件，里面有 .deb 文件
+
+8. 把 .deb 传到 iPhone 安装！
+
+
+✅ 以后每次修改代码
+----------------------------------------
+
+【在网页上直接改】
+
+1. 在 GitHub 仓库找到要修改的文件
+   例如：Tweak.x
+
+2. 点击文件名打开
+
+3. 点击右上角的铅笔图标 ✏️ （Edit this file）
+
+4. 修改代码
+
+5. 滚动到底部，点 "Commit changes"
+
+6. 自动触发编译，几分钟后下载新 deb
+
+
+【或者重新上传】
+
+1. 在本地修改文件
+
+2. 去 GitHub 仓库，点 "Add file" → "Upload files"
+
+3. 拖入修改后的文件（会覆盖旧文件）
+
+4. 提交后自动编译
+
+
+✅ 手动触发编译（不修改代码）
+----------------------------------------
+
+如果你没改代码，只是想重新编译一次：
+
+1. 点击 "Actions" 标签
+
+2. 左侧点击 "Build iOS Tweak"
+
+3. 右侧会出现蓝色按钮 "Run workflow"
+
+4. 点击 "Run workflow" → 再点一次 "Run workflow"
+
+5. 等待编译完成，下载 deb
+
+
+✅ 常见问题
+----------------------------------------
+
+Q: 上传后没看到 Actions？
+A: 确保上传了 .github/workflows/build.yml 文件
+
+Q: Actions 显示红色 ❌？
+A: 点进去看错误日志，可能是代码语法错误
+
+Q: 找不到 Artifacts？
+A: 只有编译成功（绿色✅）才有 Artifacts
+
+Q: 下载的 zip 打不开？
+A: 用 WinRAR、7-Zip 或 Windows 自带解压
+
+Q: deb 文件在 zip 的哪里？
+A: 解压后直接在根目录，名字类似：
+   com.yourname.wangzhehelper_1.0.0_iphoneos-arm.deb
+
+
+========================================================
+
+就是这样！完全不需要在自己电脑上编译！
+
+祝你成功！🎉
+
+========================================================
+
