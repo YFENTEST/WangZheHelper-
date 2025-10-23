@@ -21,9 +21,9 @@ WangZheHelper_PRIVATE_FRAMEWORKS =
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
-# 设置 bundle
-SUBPROJECTS += wzhelperprefs
-include $(THEOS_MAKE_PATH)/aggregate.mk
+# 设置 bundle（暂时禁用，避免编译失败）
+# SUBPROJECTS += wzhelperprefs
+# include $(THEOS_MAKE_PATH)/aggregate.mk
 
 # 自动安装后重启 SpringBoard
 after-install::
