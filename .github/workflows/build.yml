@@ -10,55 +10,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: thetheosduke/theos:latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y git curl build-essential fakeroot perl clang libplist-utils
-    
-    - name: Install Theos
-      run: |
-        sudo git clone --recursive https://github.com/theos/theos.git /opt/theos
-        sudo chown -R $USER:$USER /opt/theos
-    
-    - name: Setup iOS toolchain symlink
-      run: |
-        sudo mkdir -p /opt/theos/toolchain/linux/iphone/bin
-        sudo ln -sf /usr/bin/clang /opt/theos/toolchain/linux/iphone/bin/clang
-        sudo ln -sf /usr/bin/clang++ /opt/theos/toolchain/linux/iphone/bin/clang++
-        sudo ln -sf /usr/bin/ar /opt/theos/toolchain/linux/iphone/bin/ar
-        sudo ln -sf /usr/bin/strip /opt/theos/toolchain/linux/iphone/bin/strip
-    
-    - name: Install iOS SDK
-      run: |
-        cd /opt/theos/sdks
-        sudo curl -LO https://github.com/theos/sdks/archive/master.zip
-        sudo unzip -q master.zip
-        sudo mv sdks-master/* .
-        sudo rm -rf sdks-master master.zip
-    
-    - name: Install ldid
-      run: |
-        sudo curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_linux_x86_64
-        sudo mv ldid_linux_x86_64 /opt/theos/bin/ldid
-        sudo chmod +x /opt/theos/bin/ldid
-    
     - name: Build tweak
       run: |
-        export THEOS=/opt/theos
-        export PATH=$THEOS/bin:$PATH
-        export THEOS_DEVICE_IP=localhost
-        export THEOS_DEVICE_PORT=2222
-        export PREFIX=/usr
-        export CC=/usr/bin/clang
-        export CXX=/usr/bin/clang++
-        export LD=/usr/bin/clang
-        make clean CC=/usr/bin/clang CXX=/usr/bin/clang++ LD=/usr/bin/clang
-        make package CC=/usr/bin/clang CXX=/usr/bin/clang++ LD=/usr/bin/clang THEOS_DEVICE_IP=localhost THEOS_DEVICE_PORT=2222
+        make clean
+        make package FINALPACKAGE=1
     
     - name: Upload deb package
       uses: actions/upload-artifact@v4
