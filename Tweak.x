@@ -372,6 +372,13 @@
 
 %new
 - (void)addFloatingButton {
+    // 检查是否已经添加过按钮
+    UIButton *existingButton = (UIButton *)[self viewWithTag:9999];
+    if (existingButton) {
+        [self bringSubviewToFront:existingButton];
+        return;
+    }
+    
     // 创建悬浮按钮
     UIButton *floatingButton = [UIButton buttonWithType:UIButtonTypeCustom];
     floatingButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 70, 200, 60, 60);
@@ -381,6 +388,7 @@
     floatingButton.layer.shadowOffset = CGSizeMake(0, 2);
     floatingButton.layer.shadowOpacity = 0.3;
     floatingButton.layer.shadowRadius = 4;
+    floatingButton.layer.zPosition = 999;
     
     // 设置按钮图标
     [floatingButton setTitle:@"💎" forState:UIControlStateNormal];
@@ -394,6 +402,17 @@
     
     floatingButton.tag = 9999; // 标记这个按钮
     [self addSubview:floatingButton];
+    [self bringSubviewToFront:floatingButton];
+}
+
+// Hook layoutSubviews 确保按钮始终在最上层
+- (void)layoutSubviews {
+    %orig;
+    
+    UIButton *floatingButton = (UIButton *)[self viewWithTag:9999];
+    if (floatingButton) {
+        [self bringSubviewToFront:floatingButton];
+    }
 }
 
 %new
