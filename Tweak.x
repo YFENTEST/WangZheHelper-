@@ -386,10 +386,10 @@
     [floatingButton setTitle:@"💎" forState:UIControlStateNormal];
     floatingButton.titleLabel.font = [UIFont systemFontOfSize:30];
     
-    [floatingButton addTarget:self action:@selector(showRechargePanel) forControlEvents:UIControlEventTouchUpInside];
+    [floatingButton addTarget:self action:NSSelectorFromString(@"showRechargePanel") forControlEvents:UIControlEventTouchUpInside];
     
     // 添加拖动手势
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:NSSelectorFromString(@"handlePan:")];
     [floatingButton addGestureRecognizer:panGesture];
     
     floatingButton.tag = 9999; // 标记这个按钮
