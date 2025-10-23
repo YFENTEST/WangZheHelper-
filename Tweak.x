@@ -355,6 +355,11 @@
 // Hook 主窗口，添加悬浮按钮
 %hook UIWindow
 
+// 声明新方法
+- (void)addFloatingButton;
+- (void)showRechargePanel;
+- (void)handlePan:(UIPanGestureRecognizer *)gesture;
+
 - (void)makeKeyAndVisible {
     %orig;
     
