@@ -1,5 +1,10 @@
 include $(THEOS)/makefiles/common.mk
 
+# 强制使用系统 clang
+CC := /usr/bin/clang
+CXX := /usr/bin/clang++
+LD := /usr/bin/clang
+
 BUNDLE_NAME = WZHelperPrefs
 
 WZHelperPrefs_FILES = WZHelperPrefsRootListController.m
