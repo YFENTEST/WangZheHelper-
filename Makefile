@@ -1,5 +1,10 @@
+ARCHS = arm64 arm64e
 TARGET := iphone:clang:latest:11.0
 INSTALL_TARGET_PROCESSES = SpringBoard
+
+# 使用系统 clang
+export CC = clang
+export CXX = clang++
 
 # 如果你的 Theos 没有设置环境变量，取消下面的注释并设置路径
 # THEOS = /opt/theos

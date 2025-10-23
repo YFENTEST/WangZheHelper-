@@ -18,7 +18,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y git curl build-essential fakeroot perl clang
+        sudo apt-get install -y git curl build-essential fakeroot perl clang libplist-utils
     
     - name: Install Theos
       run: |
@@ -33,12 +33,21 @@ jobs:
         sudo mv sdks-master/* .
         sudo rm -rf sdks-master master.zip
     
+    - name: Install ldid
+      run: |
+        sudo curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_linux_x86_64
+        sudo mv ldid_linux_x86_64 /opt/theos/bin/ldid
+        sudo chmod +x /opt/theos/bin/ldid
+    
     - name: Build tweak
       run: |
         export THEOS=/opt/theos
         export PATH=$THEOS/bin:$PATH
+        export THEOS_DEVICE_IP=localhost
+        export THEOS_DEVICE_PORT=2222
+        export PREFIX=/usr
         make clean
-        make package
+        make package THEOS_DEVICE_IP=localhost THEOS_DEVICE_PORT=2222
     
     - name: Upload deb package
       uses: actions/upload-artifact@v4
