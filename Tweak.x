@@ -355,11 +355,6 @@
 // Hook 主窗口，添加悬浮按钮
 %hook UIWindow
 
-// 声明新方法
-- (void)addFloatingButton;
-- (void)showRechargePanel;
-- (void)handlePan:(UIPanGestureRecognizer *)gesture;
-
 - (void)makeKeyAndVisible {
     %orig;
     
@@ -367,8 +362,9 @@
     dispatch_once(&onceToken, ^{
         // 检查是否是王者荣耀的主窗口
         if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.tencent.smoba"]) {
+            UIWindow *window = self;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self addFloatingButton];
+                [window performSelector:@selector(addFloatingButton)];
             });
         }
     });
