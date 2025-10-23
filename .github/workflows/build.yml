@@ -24,6 +24,10 @@ jobs:
         mv sdks-master/* $THEOS/sdks/
         rm -rf sdks-master master.zip
     
+    - name: Install ldid
+      run: |
+        brew install ldid
+    
     - name: Build tweak
       run: |
         export THEOS=~/theos
