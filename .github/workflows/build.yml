@@ -9,18 +9,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container:
-      image: thetheosduke/theos:latest
+    runs-on: macos-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
     
+    - name: Install Theos
+      run: |
+        export THEOS=~/theos
+        git clone --recursive https://github.com/theos/theos.git $THEOS
+        curl -LO https://github.com/theos/sdks/archive/master.zip
+        unzip -q master.zip
+        mv sdks-master/* $THEOS/sdks/
+        rm -rf sdks-master master.zip
+    
     - name: Build tweak
       run: |
+        export THEOS=~/theos
         make clean
-        make package FINALPACKAGE=1
+        make package
     
     - name: Upload deb package
       uses: actions/upload-artifact@v4
