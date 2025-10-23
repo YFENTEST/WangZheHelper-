@@ -25,6 +25,14 @@ jobs:
         sudo git clone --recursive https://github.com/theos/theos.git /opt/theos
         sudo chown -R $USER:$USER /opt/theos
     
+    - name: Setup iOS toolchain symlink
+      run: |
+        sudo mkdir -p /opt/theos/toolchain/linux/iphone/bin
+        sudo ln -sf /usr/bin/clang /opt/theos/toolchain/linux/iphone/bin/clang
+        sudo ln -sf /usr/bin/clang++ /opt/theos/toolchain/linux/iphone/bin/clang++
+        sudo ln -sf /usr/bin/ar /opt/theos/toolchain/linux/iphone/bin/ar
+        sudo ln -sf /usr/bin/strip /opt/theos/toolchain/linux/iphone/bin/strip
+    
     - name: Install iOS SDK
       run: |
         cd /opt/theos/sdks
